@@ -1,0 +1,5 @@
+sphinx>=1.6
+sphinx_bootstrap_theme>=0.6
+sphinxcontrib-httpdomain>=1.5
+sphinxcontrib-httpexample>=0.8
+doc8>=0.8
