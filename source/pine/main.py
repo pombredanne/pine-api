@@ -1,17 +1,8 @@
-import multiprocessing
+from aiohttp import web
 
-from sanic import Sanic
-from sanic.response import json
-
-from version import version_info
-
-app = Sanic()
-
-
-@app.get("/version")
-async def get_version(request):
-    return json(version_info())
-
+import version
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=6666, workers=multiprocessing.cpu_count())
+    app = web.Application()
+    app.add_routes(version.routes)
+    web.run_app(app, host="127.0.0.1", port=8080)

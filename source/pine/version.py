@@ -1,3 +1,10 @@
-def version_info():
-    """Return a dictionary containing this version's information"""
-    return {"version": "v1", "accept": "application/vnd.pine.v1+json"}
+from aiohttp import web
+
+from lib import version
+
+routes = web.RouteTableDef()
+
+
+@routes.get("/version")
+async def get_version(request):
+    return web.json_response(version.version_info)
